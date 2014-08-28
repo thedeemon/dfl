@@ -6,7 +6,7 @@
 module dfl.timer;
 
 private import dfl.internal.winapi, dfl.event, dfl.base, dfl.application,
-	dfl.internal.dlib;
+	dfl.internal.dlib, dfl.internal.clib;
 
 
 ///
@@ -74,12 +74,13 @@ class Timer // docmain
 	}
 	
 	/// ditto
-	final void stop()
+	final void stop(bool dtor=false)
 	{
 		if(timerId)
 		{
 			//delete allTimers[timerId];
-			allTimers.remove(timerId);
+      if (!dtor)
+				allTimers.remove(timerId);
 			KillTimer(null, timerId);
 			timerId = 0;
 		}
@@ -123,15 +124,16 @@ class Timer // docmain
 	
 	~this()
 	{
-		dispose();
+		debug(APP_PRINT) cprintf("~Timer\n");
+		dispose(true);
 	}
 	
 	
 	protected:
 	
-	void dispose()
+	void dispose(bool dtor=false)
 	{
-		stop();
+		stop(dtor);
 	}
 	
 	

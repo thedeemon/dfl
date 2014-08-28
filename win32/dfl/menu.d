@@ -5,7 +5,7 @@
 ///
 module dfl.menu;
 
-private import dfl.internal.dlib;
+private import dfl.internal.dlib, dfl.internal.clib;
 
 private import dfl.internal.winapi, dfl.control, dfl.base, dfl.event;
 private import dfl.internal.utf, dfl.drawing, dfl.application, dfl.collections;
@@ -511,10 +511,10 @@ else
 		
 		~this()
 		{
-			Application.removeMenu(this);
-			
 			debug(APP_PRINT)
 				cprintf("~MenuItem\n");
+			Application.removeMenu(this);
+			
 		}
 		
 		
@@ -917,6 +917,7 @@ else
 		
 		~this()
 		{
+			debug(APP_PRINT) cprintf("~Menu\n");
 			if(owned)
 				DestroyMenu(hmenu);
 		}

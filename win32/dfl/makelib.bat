@@ -13,12 +13,12 @@
 @rem   or fix the paths below.
 
 if not "%dmd_path%" == "" goto dmd_set
-set dmd_path=c:\dmd
+set dmd_path=c:\D\dmd2
 :dmd_set
 set dmd_path_windows=%dmd_path%\windows
 if not exist %dmd_path_windows%\bin\dmd.exe set dmd_path_windows=%dmd_path%
 if not "%dmc_path%" == "" goto dmc_set
-set dmc_path=c:\dm
+set dmc_path=c:\D\dm
 :dmc_set
 
 if exist "%dmc_path%" goto got_dmc
@@ -45,7 +45,7 @@ set dfl_libs=%dmc_path%\lib\gdi32.lib %dmc_path%\lib\comctl32.lib %dmc_path%\lib
 @rem   -version=NO_DRAG_DROP -version=NO_MDI
 @rem   -debug=SHOW_MESSAGE_INFO -debug=MESSAGE_PAUSE
 @rem set dfl_flags=%dfl_flags% -debug=SHOW_MESSAGENFO
-set _dfl_flags=%dfl_flags% -wi
+set _dfl_flags=%dfl_flags% -wi 
 
 if not "%dfl_debug_flags%" == "" goto dfl_debug_flags_set
 	set dfl_debug_flags=-debug -g
@@ -57,7 +57,7 @@ if not "%dfl_release_flags%" == "" goto dfl_release_flags_set
 @rem	set dfl_release_flags=-O -release
 @rem	goto dfl_release_flags_set
 @rem	:dfl_not_release_tango
-	set dfl_release_flags=-O -inline -release
+	set dfl_release_flags=-O -release -inline
 :dfl_release_flags_set
 
 

@@ -5,7 +5,7 @@
 ///
 module dfl.imagelist;
 
-import dfl.base, dfl.drawing, dfl.internal.winapi;
+import dfl.base, dfl.drawing, dfl.internal.winapi, dfl.internal.clib;
 import dfl.collections;
 
 
@@ -370,6 +370,7 @@ else
 		
 		~this()
 		{
+			debug(APP_PRINT) cprintf("~ImageList\n");
 			dispose();
 		}
 		

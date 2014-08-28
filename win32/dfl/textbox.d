@@ -5,7 +5,7 @@
 ///
 module dfl.textbox;
 
-private import dfl.internal.dlib;
+private import dfl.internal.dlib, dfl.internal.clib;
 
 private import dfl.control, dfl.base, dfl.internal.winapi, dfl.application;
 private import dfl.drawing, dfl.event, dfl.internal.utf;

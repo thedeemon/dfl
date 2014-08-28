@@ -7,7 +7,7 @@
 ///
 module dfl.registry;
 
-private import dfl.internal.dlib;
+private import dfl.internal.dlib, dfl.internal.clib;
 
 private import dfl.internal.winapi, dfl.base, dfl.internal.utf;
 
@@ -682,8 +682,10 @@ class RegistryKey // docmain
 	///
 	final void close()
 	{
+		debug(APP_PRINT) cprintf("RegistryKey.close hkey=%x\n", hkey);
 		//if(!owned)
 			RegCloseKey(hkey);
+		hkey = null;
 	}
 	
 	
@@ -1172,12 +1174,14 @@ class RegistryKey // docmain
 	{
 		this.hkey = hkey;
 		this.owned = owned;
+		debug(APP_PRINT) cprintf("RegistryKey.ctor hkey=%x owned=%d\n", hkey, owned ? 1 : 0);
 	}
 	
 	
 	~this()
 	{
-		if(owned)
+		debug(APP_PRINT) cprintf("~RegistryKey hkey=%x owned=%d\n", hkey, owned ? 1 : 0);
+		if(owned && hkey !is null)
 			RegCloseKey(hkey);
 	}
 	

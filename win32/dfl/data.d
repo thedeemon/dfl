@@ -5,7 +5,7 @@
 ///
 module dfl.data;
 
-private import dfl.internal.dlib;
+private import dfl.internal.dlib, dfl.internal.clib;
 
 private import dfl.base, dfl.internal.winapi, dfl.internal.wincom, dfl.application,
 	dfl.internal.utf, dfl.internal.com;
@@ -909,6 +909,8 @@ class ComToDdataObject: dfl.data.IDataObject // package
 	
 	~this()
 	{
+		debug(APP_PRINT) cprintf("~ComToDdataObject\n");
+
 		dataObj.Release(); // Must get called...
 	}
 	

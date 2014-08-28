@@ -5,7 +5,7 @@
 ///
 module dfl.drawing;
 
-private import dfl.internal.dlib;
+private import dfl.internal.dlib, dfl.internal.clib;
 
 private import dfl.internal.winapi, dfl.base, dfl.internal.utf, dfl.internal.com,
 	dfl.internal.wincom;
@@ -1151,6 +1151,7 @@ class Bitmap: Image // docmain
 	
 	~this()
 	{
+		debug(APP_PRINT) cprintf("~Bitmap\n");
 		if(owned)
 			dispose();
 	}
@@ -1389,6 +1390,7 @@ class Picture: Image // docmain
 	
 	~this()
 	{
+		debug(APP_PRINT) cprintf("~Picture\n");
 		dispose();
 	}
 	
@@ -2242,6 +2244,7 @@ class Graphics // docmain
 	
 	~this()
 	{
+		debug(APP_PRINT) cprintf("~Graphics\n");
 		if(owned)
 			dispose();
 	}
@@ -3270,6 +3273,7 @@ class Icon: Image // docmain
 	
 	~this()
 	{
+		debug(APP_PRINT) cprintf("~Icon\n");
 		if(owned)
 			dispose();
 	}
@@ -3739,6 +3743,7 @@ class Font // docmain
 	
 	~this()
 	{
+		debug(APP_PRINT) cprintf("~Font\n");
 		if(owned)
 			DeleteObject(hf);
 	}
@@ -3888,6 +3893,7 @@ class Pen // docmain
 	
 	~this()
 	{
+		debug(APP_PRINT) cprintf("~Pen\n");
 		if(owned)
 			DeleteObject(hp);
 	}
@@ -3924,6 +3930,7 @@ class Brush // docmain
 	
 	~this()
 	{
+		debug(APP_PRINT) cprintf("~Brush\n");
 		if(owned)
 			DeleteObject(hb);
 	}
@@ -4063,6 +4070,7 @@ class Region // docmain
 	
 	~this()
 	{
+		debug(APP_PRINT) cprintf("~Region\n");
 		if(owned)
 			DeleteObject(hrgn);
 	}

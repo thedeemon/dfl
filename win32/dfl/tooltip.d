@@ -34,6 +34,7 @@ class ToolTip // docmain
 	
 	~this()
 	{
+		debug(APP_PRINT) cprintf("~Tooltip\n");
 		removeAll(); // Fixes ref count.
 		DestroyWindow(hwtt);
 	}
@@ -153,7 +154,7 @@ class ToolTip // docmain
 		while(SendMessageA(hwtt, TTM_ENUMTOOLSA, 0, cast(LPARAM)&tool))
 		{
 			SendMessageA(hwtt, TTM_DELTOOLA, 0, cast(LPARAM)&tool);
-			Application.refCountDec(cast(void*)this);
+			//Application.refCountDec(cast(void*)this);
 		}
 	}
 	

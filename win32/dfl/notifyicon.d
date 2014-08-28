@@ -7,7 +7,7 @@ module dfl.notifyicon;
 
 private import dfl.internal.winapi, dfl.base, dfl.drawing;
 private import dfl.control, dfl.form, dfl.application;
-private import dfl.event, dfl.internal.utf, dfl.internal.dlib;
+private import dfl.event, dfl.internal.utf, dfl.internal.dlib, dfl.internal.clib;
 
 version(DFL_NO_MENUS)
 {
@@ -164,6 +164,7 @@ class NotifyIcon // docmain
 	
 	~this()
 	{
+		debug(APP_PRINT) cprintf("~NotifyIcon\n");
 		if(nid.uID)
 		{
 			_forceDelete();
@@ -459,6 +460,8 @@ class NotifyIconControl: Control
 
 static ~this()
 {
+		debug(APP_PRINT) cprintf("static ~this notifyicon.d\n");
+
 	// Due to all items not being destructed at program exit,
 	// remove all visible notify icons because the OS won't.
 	foreach(NotifyIcon ni; allNotifyIcons)

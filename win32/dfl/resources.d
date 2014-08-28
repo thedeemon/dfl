@@ -5,7 +5,7 @@
 ///
 module dfl.resources;
 
-private import dfl.internal.dlib;
+private import dfl.internal.dlib, dfl.internal.clib;
 
 private import dfl.internal.utf, dfl.internal.winapi, dfl.base, dfl.drawing;
 
@@ -286,6 +286,8 @@ else
 		
 		~this()
 		{
+			debug(APP_PRINT) cprintf("~Recources\n");
+
 			if(_owned)
 				dispose();
 		}

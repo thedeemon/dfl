@@ -1072,6 +1072,8 @@ final class Application // docmain
 	
 	static ~this()
 	{
+		debug(APP_PRINT) cprintf("static ~this Application\n");
+
 		foreach (key; hotkeyId.keys)
 		{
 			removeHotkey(key);
@@ -2282,6 +2284,7 @@ static this()
 
 static ~this()
 {
+		debug(APP_PRINT) cprintf("static ~this Application 2\n");
 	version(DFL_NO_MENUS)
 	{
 	}
